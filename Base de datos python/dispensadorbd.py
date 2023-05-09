@@ -39,5 +39,28 @@ class DispensadorBD(Tabla):
             super().actualiza(operacion)
         except mysql.connector.Error as e:
             raise PersistenciaException(f'Error: {self.msj_error(e)} en la tabla {self.nomTablaDispensador} de la base de datos {self.database}') from e
+        
+
+
+    def lista(self):
+        ''' Regresa la lista de todos los registros de la bd
+        '''
+        listaRegistrosDisp = []
+
+        
+        operacion = f"SELECT * FROM {self.nomTablaDispensador};"
+        
+        try:
+            renglones = super().consulta(operacion)
+        except mysql.connector.Error as e:
+            raise PersistenciaException(f'Error: {self.msj_error(e)} en la tabla {self.nomTablaDispensador} de la base de datos {self.database}') from e
+
+        for renglon in renglones:
+            # Crea un genero con los campos obtenidos de un renglon de la BD. 
+            # renglon es una tupla que se desempaca en los argumentos del constructor de dispensador
+            registros = Dispensador(*renglon)
+            listaRegistrosDisp.append(registros)
+               
+        return listaRegistrosDisp
            
 

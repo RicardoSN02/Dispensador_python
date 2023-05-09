@@ -7,8 +7,9 @@ import time
 
 class Dispensador:
 
-    def __init__(self, cantidad = None, fecha = None, hora = None):
+    def __init__(self,id_dispensador=None,cantidad = None, fecha = None, hora = None):
         
+        self._id_dispensador = id_dispensador
         self._cantidad = cantidad
         self._fecha = fecha
         self._hora = hora
