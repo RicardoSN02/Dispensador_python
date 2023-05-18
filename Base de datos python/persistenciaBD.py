@@ -11,7 +11,7 @@ class PersistenciaBD:
     def __init__(self):
 
         self.__user = 'root'
-        self.__password = '035602'
+        self.__password = '1234'
         self.__host = 'localhost'
         self.__database = 'dispensadorbd'
         self.__nomTablaDispensador = 'dispensador'
